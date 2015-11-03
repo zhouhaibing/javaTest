@@ -21,6 +21,7 @@ public class Test {
       System.out.println("hello world");
       
       System.out.println("step1");
+      System.out.println("step2");
     }
     
     
