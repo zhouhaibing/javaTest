@@ -23,7 +23,7 @@ public class DataTranslation {
     public static String inputPath = "E:\\format-data\\originalData\\datalogs_20150821_59\\login_archives";
     public static String outPath = "E:\\format-data\\originalData\\datalogs_out\\datalogs_20150821_59\\login_archives";
     
-    public static void main(String[] args){
+    public static void main(String[] args){ 
         //get files in a day
         File inputFile = new File(inputPath);
         File[] filesByDay = null;
