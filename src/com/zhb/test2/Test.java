@@ -15,10 +15,10 @@ public class Test {
     public static void main(String[] args){
        //String configChangeValue = "fontScale|orientation|keyboardHidden|locale|navigation|screenSize|uiMode";
        //System.out.println(combineAttrs("xxx|ddddd", configChangeValue));
-      // System.out.println(1/100.f);
-        
+      // System.out.println(1/100.f);      
       System.out.println(ts());
       System.out.println();
+      System.out.println("hello world");
         
     }
     
