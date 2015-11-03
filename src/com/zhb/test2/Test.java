@@ -18,6 +18,7 @@ public class Test {
       // System.out.println(1/100.f);
         
       System.out.println(ts());
+      System.out.println();
         
     }
     
