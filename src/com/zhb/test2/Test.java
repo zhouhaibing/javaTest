@@ -26,6 +26,7 @@ public class Test {
     
     
     private static final String TIME_PATTERN = "yyyyMMddHHmmss";
+    
     private static final SimpleDateFormat sTsFormat = new SimpleDateFormat(
             TIME_PATTERN, Locale.getDefault());
 
