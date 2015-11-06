@@ -24,9 +24,10 @@ public class Test {
       System.out.println("step2");
       
       //i create a mywork branch
-      System.out.println("mywork step3");
-      
+      System.out.println("mywork step3");      
       //master branch
+      System.out.println("mywork step4");
+
     }
     
     
