@@ -25,6 +25,7 @@ public class Test {
       
       //i create a mywork branch
       System.out.println("mywork step3");
+      System.out.println("mywork step4");
     }
     
     
