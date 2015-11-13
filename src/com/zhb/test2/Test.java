@@ -27,7 +27,14 @@ public class Test {
       System.out.println("mywork step3");      
       //master branch
       System.out.println("mywork step4");
+      
+      System.out.println(getBool());
+      
 
+    }
+    
+    public static boolean getBool(){
+        return false || true;
     }
     
     
