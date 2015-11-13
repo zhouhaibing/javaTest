@@ -32,6 +32,7 @@ public class Test {
       System.out.println(getBool());
       
 
+      System.err.println("make in master");
     }
     
     public static boolean getBool(){
