@@ -33,6 +33,7 @@ public class Test {
       
 
       System.out.println("make in branch11");
+      System.out.println("make in branch12");
     }
     
     public static boolean getBool(){
