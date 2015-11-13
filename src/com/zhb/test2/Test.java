@@ -34,6 +34,10 @@ public class Test {
 
       System.err.println("make in master");
       System.err.println("make in master1");
+
+      System.out.println("make in branch11");
+      System.out.println("make in branch12");
+
     }
     
     public static boolean getBool(){
