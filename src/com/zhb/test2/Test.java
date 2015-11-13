@@ -29,7 +29,13 @@ public class Test {
       System.out.println("mywork step4");
       
       System.out.println("make in branch1");
+      System.out.println(getBool());
+      
 
+    }
+    
+    public static boolean getBool(){
+        return false || true;
     }
     
     
