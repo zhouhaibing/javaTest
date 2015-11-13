@@ -37,7 +37,11 @@ public class Test {
 
       System.out.println("make in branch11");
       System.out.println("make in branch12");
+<<<<<<< HEAD
 
+=======
+      System.out.println("make in branch13");
+>>>>>>> branch1
     }
     
     public static boolean getBool(){
