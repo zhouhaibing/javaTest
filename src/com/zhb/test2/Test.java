@@ -33,6 +33,7 @@ public class Test {
       
 
       System.err.println("make in master");
+      System.err.println("make in master1");
     }
     
     public static boolean getBool(){
