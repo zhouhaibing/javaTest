@@ -16,27 +16,7 @@ public class Test {
        //String configChangeValue = "fontScale|orientation|keyboardHidden|locale|navigation|screenSize|uiMode";
        //System.out.println(combineAttrs("xxx|ddddd", configChangeValue));
       // System.out.println(1/100.f);      
-      System.out.println(ts());
-      System.out.println();
-      System.out.println("hello world");
       
-      System.out.println("step1");
-      System.out.println("step2");
-      
-      //i create a mywork branch
-      System.out.println("mywork step3");      
-      //master branch
-      System.out.println("mywork step4");
-      
-      System.out.println("make in branch1");
-      System.out.println(getBool());
-      
-
-      System.err.println("make in master");
-      System.err.println("make in master1");
-
-      System.out.println("make in branch11");
-      System.out.println("make in branch12");
 
 
     }
