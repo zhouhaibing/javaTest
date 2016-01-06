@@ -9,10 +9,11 @@ import com.alibaba.fastjson.JSON;
 public class JsonTest {
     public static void main(String[] args){
         
-        //String json = "{\"name\":{\"first\":\"zhou\",\"second\":\"hai\"},\"age\":\"10\",\"hoppy\":\"base\"}";
+        String json = "{\"name\":{\"first\":\"zhou\"},\"age\":\"10\",\"hoppy\":\"base\"}";
         //String json = "{\"name\":\"\",\"age\":\"10\",\"hoppy\":\"base\"}";//error
         //String json = "{\"name\":{\"\"},\"age\":\"10\",\"hoppy\":\"base\"}";//error
-        String json = "{\"hoppy\":null}";//equal to  "{\"age\":\"10\"}"
+        //String json = "{\"hoppy\":null}";//equal to  "{\"age\":\"0\"}"
+        //String json = "{\"age\":\"\"}";
         //String json = "{\"age\":\"10\",\"hoppy\":\"\"}";
         Person p = JSON.parseObject(json,Person.class);
         //System.out.println(p.getName().getFirst());
@@ -24,7 +25,7 @@ public class JsonTest {
         //object to json
         Person p1 = new Person();
         p1.setName(null);
-        p1.setAge(2);
+        //p1.setAge(2);
         p1.setHoppy(null);
         System.out.println(JSON.toJSONString(p1));
         

@@ -1,13 +1,11 @@
 package com.zhb.test2;
 
-import com.alibaba.fastjson.JSON;
-
-import java.math.BigInteger;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Locale;
+import java.util.Random;
 import java.util.Set;
 
 
@@ -17,12 +15,25 @@ public class Test {
        //System.out.println(combineAttrs("xxx|ddddd", configChangeValue));
       // System.out.println(1/100.f);      
       
-
+        
+        Date d = new Date();
+        System.out.println(d.getTime());
+        
+        System.out.println(new Date(d.getTime()));
+        
+        System.out.println((int)(Math.random()*10));
+        
+        System.out.println(getRandomNum(0,4));
 
     }
     
     public static boolean getBool(){
         return false || true;
+    }
+    
+    public static int getRandomNum(int min,int max){
+        Random random = new Random();
+        return random.nextInt(max) % (max - min + 1) + min;
     }
     
     
