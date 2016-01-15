@@ -1,5 +1,7 @@
 package com.zhb.test2;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashSet;
@@ -15,7 +17,8 @@ public class Test {
        //System.out.println(combineAttrs("xxx|ddddd", configChangeValue));
       // System.out.println(1/100.f);      
       
-        
+        System.out.println(Long.toHexString(3758096641L).toUpperCase());
+        System.out.println(Long.valueOf(0));
         Date d = new Date();
         System.out.println(d.getTime());
         
@@ -31,6 +34,8 @@ public class Test {
         String pattern = "^[A-Za-z0-9_-]*$";
         String pattern1 = "^[A-Za-z0-9_.+/-]*$";
         String pattern2 = "^[A-Za-z0-9_.-]*$";
+        String pattern3 = "^[A-Za-z0-9_.@-]*$";
+        String pattern4 = "^.*$";
         String urlpat = "^((http|ftp|https)://)([a-zA-Z0-9._-]+.[a-zA-Z]{2,6})(:[0-9]{1,4})*(/[a-zA-Z0-9&%_./-~-]*)?$";
         
         //urlpat true
@@ -45,9 +50,22 @@ public class Test {
         
         String str3 = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArplNLNzFJpRjGKqV8mmAalHCFoBTKHM4OimWSBFI6odl2TADAFEHnzJO2wiHSE5HnBxh6Ay7A9jrwxIp4iNlL82j8a9NQxDWlV1k1h8FQIttfDPTFTapkRoiSqZdRgH4JYIMWUYGDVtEaQe449w6J6jSa6o4MorQ0JZ2TdekUSBJ71hEOsQDeQcI/kPSR+q3IifpsEdWG+RkBw0c00cNe+I0P0/gu14Wfnio36AdYnCpe7HiMTxNfNq23cECPSvYJdXdZ8IpnyStTKzDGMK1hGOsTQSJgoi6Ppz2ndMRm3gcNJj52LUGnoMWZpsHuzWrOE+D7MKJpLHk4XzNS2exrwIDAQAB";
         
-        
+        String str4 = "qA4Cax@zJhtj7GdTq4NCxm@zhWtjQGdq";
         //String str = "https:";
-        System.out.println(str3.matches(pattern1));
+        System.out.println("regex matches " + str4.matches(pattern2));
+        
+        
+        String VERIFY_SESSION_SIGN_PATTERN = "{0}{1}";
+        
+        System.out.println(String.format(VERIFY_SESSION_SIGN_PATTERN, "dddd","xxxx"));
+        
+        System.out.println(java.nio.charset.StandardCharsets.UTF_8.toString());
+        try {
+            System.out.println(URLEncoder.encode("zhou", java.nio.charset.StandardCharsets.UTF_8.toString()));
+        } catch (UnsupportedEncodingException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
 
     }
     
