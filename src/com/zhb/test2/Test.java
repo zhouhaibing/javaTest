@@ -1,8 +1,11 @@
 package com.zhb.test2;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -15,8 +18,21 @@ public class Test {
     public static void main(String[] args){
        //String configChangeValue = "fontScale|orientation|keyboardHidden|locale|navigation|screenSize|uiMode";
        //System.out.println(combineAttrs("xxx|ddddd", configChangeValue));
-      // System.out.println(1/100.f);      
-      
+      // System.out.println(1/100.f);  
+        
+        
+        System.out.println(getSpecificFormatDate("yyyyMMddHHmmss",-1));
+        
+        Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.DATE, 1);
+        System.out.println(cal.getTime());
+        
+        SimpleDateFormat format = new SimpleDateFormat("yyyyMMddHHmmss");
+        System.out.println(format.format(new Date()));
+        
+        /*int hex = 0x00ff00;
+        System.out.println(hex);
+        System.out.println(Integer.parseInt("00ff00", 16));//("0x00ff00", 16)) is error
         System.out.println(Long.toHexString(3758096641L).toUpperCase());
         System.out.println(Long.valueOf(0));
         Date d = new Date();
@@ -26,7 +42,7 @@ public class Test {
         
         System.out.println((int)(Math.random()*10));
         
-        System.out.println(getRandomNum(0,4)); 
+        System.out.println(getRandomNum(0,4)); */
         
         String s = null;
         System.out.println("haha" + s);//hahanull
@@ -66,6 +82,10 @@ public class Test {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
+        
+        
+        
+        
 
     }
     
@@ -110,6 +130,18 @@ public class Test {
             set.add(attr);
         }
         return set;
+    }
+    
+    public static String getSpecificFormatDate(String pattern,int addDays){
+        Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.DATE, addDays);
+        String defaultPat = "yyyy-MM-dd HH:mm:ss";
+        if(!StringUtils.isEmpty(pattern)){
+            defaultPat = pattern;
+        }
+        
+        SimpleDateFormat format = new SimpleDateFormat(defaultPat);
+        return format.format(cal.getTime());
     }
     
     

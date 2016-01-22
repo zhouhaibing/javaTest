@@ -1,6 +1,7 @@
 package com.zhb.test2;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 /**
  * fast json test 
  * @author ZHOUHAIBING
@@ -9,18 +10,32 @@ import com.alibaba.fastjson.JSON;
 public class JsonTest {
     public static void main(String[] args){
         
-        String json = "{\"name\":{\"first\":\"zhou\"},\"age\":\"10\",\"hoppy\":\"base\"}";
+        
+        String json2 = "{\"code\":5,\"msg\":\"sign\\u65e0\\u6548\",\"data\":[]}";
+        JSONObject obj = JSONObject.parseObject(json2);
+        System.out.println(obj.getInteger("code"));
+        System.out.println(obj.getString("data"));
+        obj.put("data", null);
+        System.out.println(obj.toJSONString());
+        
+        
+        //json to object
+        //String json = "{\"name\":{\"first\":\"zhou\"},\"age\":\"10\",\"hoppy\":\"base\"}";//right
+        //String json = "{\"name\":null,\"age\":\"10\",\"hoppy\":\"base\"}";//right
+        String json = "{\"age\":\"10\",\"hoppy\":\"base\",\"check\":true}";//right
         //String json = "{\"name\":\"\",\"age\":\"10\",\"hoppy\":\"base\"}";//error
         //String json = "{\"name\":{\"\"},\"age\":\"10\",\"hoppy\":\"base\"}";//error
         //String json = "{\"hoppy\":null}";//equal to  "{\"age\":\"0\"}"
         //String json = "{\"age\":\"\"}";
         //String json = "{\"age\":\"10\",\"hoppy\":\"\"}";
+        System.out.println("-------------------");
         Person p = JSON.parseObject(json,Person.class);
         //System.out.println(p.getName().getFirst());
         System.out.println(p.getHoppy());
         System.out.println(p.getAge());
+        System.out.println(p.getName());
         System.out.println(JSON.toJSONString(p));
-        
+        System.out.println("------------------");
         
         //object to json
         Person p1 = new Person();
@@ -47,6 +62,14 @@ class Person{
     private Name name;
     private int age;
     private String hoppy;
+    private boolean check;
+    
+    public boolean isCheck() {
+        return check;
+    }
+    public void setCheck(boolean check) {
+        this.check = check;
+    }
     /**
      * @return the name
      */
