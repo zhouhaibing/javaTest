@@ -4,6 +4,7 @@ import org.apache.commons.lang3.StringUtils;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.text.MessageFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -15,10 +16,36 @@ import java.util.Set;
 
 
 public class Test {
-    public static void main(String[] args){
-       //String configChangeValue = "fontScale|orientation|keyboardHidden|locale|navigation|screenSize|uiMode";
+    private static final String SIGN_PATTERN = "orderid={0}&username={1}&gameid={2}";
+    
+    public static void main(String[] args) throws UnsupportedEncodingException{
+       
+        //中文匹配
+        String regex1 = "[\u4e00-\u9fa5]*";
+        String regex2 = "[A-Za-z0-9_-]*";
+        //中文和字符交叉
+        String regex3 = "([\u4e00-\u9fa5]*[A-Za-z0-9_-]*)|([A-Za-z0-9_-]*[\u4e00-\u9fa5]*)";
+        System.out.println("大神".matches(regex3));
+        
+        String str = "^(?:[0-9]{1,3}\\.){3}[0-9]{1,3}(\\,(?:[0-9]{1,3}\\.){3}[0-9]{1,3})*$";
+        System.out.println("42.62.45.134,42.62.45.134".matches(str));
+        
+        System.out.println("---------------------");
+        //String configChangeValue = "fontScale|orientation|keyboardHidden|locale|navigation|screenSize|uiMode";
        //System.out.println(combineAttrs("xxx|ddddd", configChangeValue));
       // System.out.println(1/100.f);  
+        String orderid = "";
+        String username = "";
+        String gameid = "yyy";
+        try {
+            System.out.println(MessageFormat.format(SIGN_PATTERN, URLEncoder.encode(orderid,"UTF-8"),username,gameid));
+        } catch (UnsupportedEncodingException e1) {
+            // TODO Auto-generated catch block
+            e1.printStackTrace();
+        }
+        
+        System.out.println(URLEncoder.encode("zhou/+/", "UTF-8"));
+        
         
         
         System.out.println(getSpecificFormatDate("yyyyMMddHHmmss",-1));
@@ -44,7 +71,7 @@ public class Test {
         
         System.out.println(getRandomNum(0,4)); */
         
-        String s = null;
+        /*String s = null;
         System.out.println("haha" + s);//hahanull
         
         String pattern = "^[A-Za-z0-9_-]*$";
@@ -81,7 +108,7 @@ public class Test {
         } catch (UnsupportedEncodingException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
-        }
+        }*/
         
         
         

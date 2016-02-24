@@ -11,12 +11,14 @@ public class JsonTest {
     public static void main(String[] args){
         
         
-        String json2 = "{\"code\":5,\"msg\":\"sign\\u65e0\\u6548\",\"data\":[]}";
+        JSONObject jsonObj = JSON.parseObject("{\"id\":0,\"state\":{\"code\":10,\"msg\":\"invalid request param\"}}");
+        System.out.println(jsonObj.getString("state"));
+        /*String json2 = "{\"code\":5,\"msg\":\"sign\\u65e0\\u6548\",\"data\":[]}";
         JSONObject obj = JSONObject.parseObject(json2);
         System.out.println(obj.getInteger("code"));
         System.out.println(obj.getString("data"));
         obj.put("data", null);
-        System.out.println(obj.toJSONString());
+        System.out.println(obj.toJSONString());*/
         
         
         //json to object
