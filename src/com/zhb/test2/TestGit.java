@@ -7,4 +7,7 @@ public class TestGit {
   //this is master modify
   private String age;
   
+  //this is test modify
+  private String hobby;
+
 }
