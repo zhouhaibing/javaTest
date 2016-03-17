@@ -2,6 +2,7 @@ package com.zhb.test2;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.annotation.JSONField;
 /**
  * fast json test 
  * @author ZHOUHAIBING
@@ -22,9 +23,10 @@ public class JsonTest {
         
         
         //json to object
-        //String json = "{\"name\":{\"first\":\"zhou\"},\"age\":\"10\",\"hoppy\":\"base\"}";//right
+        String json = "{\"name\":{\"first\":\"zhou\"},\"age\":\"10\",\"hoppy\":\"base\"}";//right
+        //String json = "{\"name\":\"{\"first\":\"zhou\"}\",\"age\":\"10\",\"hoppy\":\"base\"}";//error.name is json string
         //String json = "{\"name\":null,\"age\":\"10\",\"hoppy\":\"base\"}";//right
-        String json = "{\"age\":\"10\",\"hoppy\":\"base\",\"check\":true}";//right
+        //String json = "{\"age\":\"10\",\"hoppy\":\"base\",\"check\":true}";//right
         //String json = "{\"name\":\"\",\"age\":\"10\",\"hoppy\":\"base\"}";//error
         //String json = "{\"name\":{\"\"},\"age\":\"10\",\"hoppy\":\"base\"}";//error
         //String json = "{\"hoppy\":null}";//equal to  "{\"age\":\"0\"}"
@@ -44,7 +46,7 @@ public class JsonTest {
         p1.setName(null);
         //p1.setAge(2);
         p1.setHoppy(null);
-        System.out.println(JSON.toJSONString(p1));
+        System.out.println(JSON.toJSONString((Object)p1));
         
         
         /**
@@ -56,6 +58,10 @@ public class JsonTest {
         
         
         System.out.println("this is json test");
+        
+       String jsonStr = "{\"age\":10,\"check\":true,\"hoppy\":\"base\"}";
+       JSONObject o = JSON.parseObject(jsonStr);
+       System.out.println(o.getInteger("age"));//o.getString also is right
     }
 
 }
@@ -99,6 +105,7 @@ class Person{
     /**
      * @return the hoppy
      */
+    @JSONField(name="hooppy")
     public String getHoppy() {
         return hoppy;
     }
@@ -107,6 +114,10 @@ class Person{
      */
     public void setHoppy(String hoppy) {
         this.hoppy = hoppy;
+    }
+    @Override
+    public String toString() {
+      return "Person [name=" + name + ", age=" + age + ", hoppy=" + hoppy + ", check=" + check + "]";
     }
     
     

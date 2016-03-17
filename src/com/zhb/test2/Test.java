@@ -1,5 +1,8 @@
 package com.zhb.test2;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+
 import org.apache.commons.lang3.StringUtils;
 
 import java.io.UnsupportedEncodingException;
@@ -13,10 +16,13 @@ import java.util.Iterator;
 import java.util.Locale;
 import java.util.Random;
 import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 public class Test {
     private static final String SIGN_PATTERN = "orderid={0}&username={1}&gameid={2}";
+    private static final String PARAM_PATTERN = "appId={1}&ucid={2}&uid={3}&uuid={4}";// this is error. 1 get the param of index one
     
     public static void main(String[] args) throws UnsupportedEncodingException{
        
@@ -111,9 +117,80 @@ public class Test {
         }*/
         
         
+        String userid = "lhh123";
+        String name = "lhh123";
+        String accesstoken = "43a2eed59ac7867187f7ae46ea33e496";
+        
+        JSONObject jsonObj = new JSONObject();
+        jsonObj.put("state", "1");
+        jsonObj.put("msg", "success");
+        JSONObject dataObj = new JSONObject();
+        dataObj.put("username", name);
+        dataObj.put("uid", userid);
+        //jsonObj.put("data", dataObj.toJSONString());
+        jsonObj.put("data", dataObj);
+        
+        String str2 = jsonObj.toJSONString();
+        JSONObject str2Obj = JSON.parseObject(str2);
+        JSONObject oo = str2Obj.getJSONObject("data");
+        System.out.println(oo.getString("uid"));
         
         
-
+        //
+        System.out.println("the priority of the operator");
+        System.out.println((int)(new Date().getTime()/1000));//this is right
+        System.out.println((int)new Date().getTime()/1000);//this is error.first to cast to int
+        
+        
+        Pattern pat = Pattern.compile("^(.+)\\.uc$");
+        System.out.println(pat.matcher("zhou.xx.ll.uc").matches());
+        
+        Pattern pat2 = Pattern.compile("^.+(\\.(baidu|BD))$");
+        System.out.println(pat2.matcher("dd.xxx.BD").matches());
+        
+        Pattern pat3 = Pattern.compile("^.+(.(dl)|(downjoy))$");
+        System.out.println(pat3.matcher("dd.xxx.downjoy").matches());
+        
+        Pattern pat4 = Pattern.compile("^.+(\\.itools\\.sky)$");
+        System.out.println(pat4.matcher("dd.xxx.itools.sky").matches());
+        
+        Pattern pat5 = Pattern.compile("^.+\\.tencent\\.tmgp\\..+$");
+        System.out.println(pat5.matcher("dd.tencent.tmgp.sky").matches());
+        
+        System.out.println(MessageFormat.format("{0}|{1}", String.valueOf(123456),"hello world"));
+        
+        
+        System.out.println(MessageFormat.format(PARAM_PATTERN, "hello","world"));
+        
+        
+        System.out.println("123456--------------");
+        String strr = "{msg=1234,returnCode=123}";
+        //Pattern pat1 = Pattern.compile("^\\{returnCode=(?<returnCode>\\d+)(,msg=(?<msg>.*))?\\}|(\\{msg=(?<msg2>.*),returnCode=(?<returnCode2>.+)\\})?$");
+        //Pattern pat1 = Pattern.compile("(?<key>\\w+)=(?<value>\\w+");
+        Pattern pat1 = Pattern.compile("^\\{(?=.*returnCode=(?<returnCode>\\d+))(?=.*msg=(?<msg>\\d+)).+\\}$");
+        // function: returnCode and msg must exist and match =(....)
+        
+        //Pattern pat1 = Pattern.compile("^\\{(?=returnCode=(?<returnCode>\\d+))(?=,msg=(?<msg>.*))?\\}$");
+        //boolean b = Pattern.matches("a*b", "aaaaab"); this is fast way to match
+        
+        
+        
+        Matcher mat = pat1.matcher(strr);
+        System.out.println(pat1.matcher(strr).matches()); 
+        mat.find(); //must do this before call group method
+        System.out.println(mat.group("returnCode"));//1235
+        //System.out.println("group msg :" + mat.group("msg"));
+        System.out.println(mat.group("msg"));//
+          
+        System.out.println(Pattern.matches("^[A-Za-z0-9_/%-.]*$", "45612dddddd+")); //the . isn't a simple character 
+        System.out.println(Pattern.matches(".{0,3}","dd"));  
+        
+        
+        System.out.println(strr.split("\\{|=|,|\\}")[1]);
+        for(String s : strr.split("\\{|=|,|\\}")){
+          System.out.println(s);
+        }
+        
     }
     
     public static boolean getBool(){
