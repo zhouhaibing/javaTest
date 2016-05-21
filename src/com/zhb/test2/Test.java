@@ -29,11 +29,35 @@ public class Test {
         //中文匹配
         String regex1 = "[\u4e00-\u9fa5]*";
         String regex2 = "[A-Za-z0-9_-]*";
+        String regex11 = "^.*[\u4e00-\u9fa5]+.*$";
+        String strrr = "大神ddd";
         //中文和字符交叉
         String regex3 = "([\u4e00-\u9fa5]*[A-Za-z0-9_-]*)|([A-Za-z0-9_-]*[\u4e00-\u9fa5]*)";
-        System.out.println("大神".matches(regex3));
+        System.out.println(strrr.matches(regex11));
         
-        String str = "^(?:[0-9]{1,3}\\.){3}[0-9]{1,3}(\\,(?:[0-9]{1,3}\\.){3}[0-9]{1,3})*$";
+        
+        String regex4 = "(\\b)(?<hi>\\w*hi?)(\\b)|(\\b)(?<you>\\w*ou?)(\\b)";
+        String str2 = "ooHi  xxhi 33 you dadahi are ok rrhi";
+        
+        
+        Pattern patt = Pattern.compile(regex4,Pattern.CASE_INSENSITIVE);
+        Matcher matt = patt.matcher(str2);
+        while(matt.find()){
+          System.out.println(matt.group(2));
+          
+        }
+        
+        //ip 正则表达式
+        String ipRegex = "((?:(?:25[0-5]|2[0-4]\\d|((1\\d{2})|([1-9]?\\d)))\\.){3}(?:25[0-5]|2[0-4]\\d|((1\\d{2})|([1-9]?\\d))))";
+        String ipStr ="10.01.73.2";
+        System.out.println(Pattern.compile(ipRegex).matcher(ipStr).matches());
+        
+        //url 校验 "http://doc.xgsdk.com:18090/internal/sdkserver/receivePayResult";
+        String urlRegex = "^http[s]?:\\/\\/([w]{3}\\.)?.+(:\\d{2,})?(\\/.+)?";
+        String urlStr = "http://doc.xgsdk.com:18090/internal/sdkserver/receivePayResult";
+        System.out.println(Pattern.compile(urlRegex).matcher(urlStr).matches());
+        
+        /*String str = "^(?:[0-9]{1,3}\\.){3}[0-9]{1,3}(\\,(?:[0-9]{1,3}\\.){3}[0-9]{1,3})*$";
         System.out.println("42.62.45.134,42.62.45.134".matches(str));
         
         System.out.println("---------------------");
@@ -63,7 +87,7 @@ public class Test {
         SimpleDateFormat format = new SimpleDateFormat("yyyyMMddHHmmss");
         System.out.println(format.format(new Date()));
         
-        /*int hex = 0x00ff00;
+        int hex = 0x00ff00;
         System.out.println(hex);
         System.out.println(Integer.parseInt("00ff00", 16));//("0x00ff00", 16)) is error
         System.out.println(Long.toHexString(3758096641L).toUpperCase());
@@ -75,9 +99,9 @@ public class Test {
         
         System.out.println((int)(Math.random()*10));
         
-        System.out.println(getRandomNum(0,4)); */
+        System.out.println(getRandomNum(0,4)); 
         
-        /*String s = null;
+        String s = null;
         System.out.println("haha" + s);//hahanull
         
         String pattern = "^[A-Za-z0-9_-]*$";
@@ -114,7 +138,7 @@ public class Test {
         } catch (UnsupportedEncodingException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
-        }*/
+        }
         
         
         String userid = "lhh123";
@@ -189,7 +213,7 @@ public class Test {
         System.out.println(strr.split("\\{|=|,|\\}")[1]);
         for(String s : strr.split("\\{|=|,|\\}")){
           System.out.println(s);
-        }
+        }*/
         
     }
     

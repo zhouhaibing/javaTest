@@ -3,6 +3,7 @@ package com.zhb.test;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -13,7 +14,10 @@ public class Test {
 	    String s = "PayInfo.Uid";
 	    String[] ss = s.split("\\.");
 	    System.out.println(ss[0]);
-
+	    
+	    System.out.println(new Date().getTime());
+	    
+	  
 	    
 	/*	Double d = 3.2;
 		System.out.println(String.valueOf(d));
@@ -35,7 +39,7 @@ public class Test {
 	        "ext":"330003","notifyURL":"http://10.20.72.72:8090/package/interfaceTest","roleId":"555",
 	        "roleName":"草上飞","serverId":"666","serverName":"dell","balance":"2999","gameOrderId":"8888",
 	        "zoneId":"333","zoneName":"huanamqu"}*/
-	    t.jsonTest();
+	    //t.jsonTest();
 	}
 	
 	//diguitest

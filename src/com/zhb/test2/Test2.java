@@ -1,29 +1,44 @@
 package com.zhb.test2;
 
 import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Random;
-import java.util.WeakHashMap;
 
 public class Test2 {
-  public static void main(String[] args) throws UnsupportedEncodingException{
-    //weakHashMapTest();
+  public  int a = 1;
+  public  boolean ready;
+  
+  public class VolatileTest extends Thread{
+    @Override
+    public void run(){
+      while(!ready){
+        Thread.yield();
+      }
+      System.out.println(a);
+    }
+  }
+  public static void main(String[] args) throws UnsupportedEncodingException{    
+    Test2 t = new Test2();
+    t.new VolatileTest().start();
+    t.a = 23;
+    t.ready = true;
     
-   
-    String s = "测试商品str";
+    
+    
+    //weakHashMapTest();
+       
+    /*String s = "测试商品str";
     String isoEncodeStr = new String(s.getBytes(),"ISO8859-1");
     System.out.println(isoEncodeStr);
     String decodeFromiso = new String(isoEncodeStr.getBytes("ISO8859-1"),"UTF-8");
     System.err.println(decodeFromiso);
     String result = URLEncoder.encode(decodeFromiso,"UTF-8");
-    System.out.println(result);
+    System.out.println(result);*/
+    
     //output : æµè¯ååstr  测试商品str    %E6%B5%8B%E8%AF%95%E5%95%86%E5%93%81str
+    
+    
   }
   
-  public static int getRandomNum(int max,int min){
+  /*public static int getRandomNum(int max,int min){
     //return (int)(min+Math.random()*(max-min+1));
     
     return new Random().nextInt(max - min + 1) + min;
@@ -70,6 +85,6 @@ public class Test2 {
         System.out.println("weakmap:"+en.getKey()+":"+en.getValue());  
 
     }  
-  }
+  }*/
 
 }

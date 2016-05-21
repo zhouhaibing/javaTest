@@ -15,7 +15,7 @@ public class CallableAndFuture {
 		FutureTask<Integer> future = new FutureTask<Integer>(callable);
 		new Thread(future).start();
 		try {
-			//Thread.sleep(5000);// 可能做一些事情
+			Thread.sleep(5000);// 可能做一些事情
 			System.out.println(future.get());
 		} catch (InterruptedException e) {
 			e.printStackTrace();
