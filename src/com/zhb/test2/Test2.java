@@ -16,11 +16,13 @@ public class Test2 {
     }
   }
   public static void main(String[] args) throws UnsupportedEncodingException{    
-    Test2 t = new Test2();
+    /*Test2 t = new Test2();
     t.new VolatileTest().start();
     t.a = 23;
-    t.ready = true;
+    t.ready = true;*/
     
+    String s = "5";
+    System.out.println(Integer.parseInt(s));
     
     
     //weakHashMapTest();

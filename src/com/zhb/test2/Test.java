@@ -54,9 +54,13 @@ public class Test {
         
         //url 校验 "http://doc.xgsdk.com:18090/internal/sdkserver/receivePayResult";
         String urlRegex = "^http[s]?:\\/\\/([w]{3}\\.)?.+(:\\d{2,})?(\\/.+)?";
-        String urlStr = "http://doc.xgsdk.com:18090/internal/sdkserver/receivePayResult";
-        System.out.println(Pattern.compile(urlRegex).matcher(urlStr).matches());
+        String urlRegex1 = "^(https?|ftp|file)://[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]";
+        String urlStr = "https://doc.xgsdk.com:18090/internal/sdkserver/receivePayResult";
+        //String urlStr = "http://www.xxxx";
+        System.out.println(Pattern.compile(urlRegex1).matcher(urlStr).matches());
         
+        System.out.println(MessageFormat.format("^\\d{0}$", "{3}"));
+        System.out.println(Pattern.compile(MessageFormat.format("^\\d{0}$", "{3}")).matcher("1235").matches());
         /*String str = "^(?:[0-9]{1,3}\\.){3}[0-9]{1,3}(\\,(?:[0-9]{1,3}\\.){3}[0-9]{1,3})*$";
         System.out.println("42.62.45.134,42.62.45.134".matches(str));
         
