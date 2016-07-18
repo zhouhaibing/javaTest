@@ -79,6 +79,15 @@ public class RegTest {
             System.out.println(mat4.group(0));
         }
         
+        System.out.println("--------------ddd---------------");
+        String reg5 = "(%[A-Z]*[0-9]*)*";
+        Pattern pat5 = Pattern.compile(reg5);
+        Matcher mat5 = pat5.matcher("%E5%A7");
+        if(mat5.matches()){
+            System.out.println(mat5.group(0));
+        }
+        
+        
         
     }
 

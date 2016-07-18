@@ -1,29 +1,32 @@
 package com.zhb.test;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
-
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.TimeZone;
+
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 
 public class Test {
 	public static void main(String[] args){
-	    Test t = new Test();
+	    /*Test t = new Test();
 	    String s = "PayInfo.Uid";
 	    String[] ss = s.split("\\.");
 	    System.out.println(ss[0]);
 	    
-	    System.out.println(new Date().getTime());
+	    System.out.println(new Date().getTime());*/
 	    
 	  
-	    
 	/*	Double d = 3.2;
 		System.out.println(String.valueOf(d));
-		
+		 
 		String s = "zhou dddd   ffff";
-		String[] ss = s.split("\\s+");//  \\s表示以空格分割   \\S表示以非空格分割
+		String[] ss = s.split("\\s+");//  \\s琛ㄧず浠ョ┖鏍煎垎鍓�   \\S琛ㄧず浠ラ潪绌烘牸鍒嗗壊
 		for(int i=0;i<ss.length;i++){
 		    System.out.println(ss[i]);
 		}*/
@@ -34,13 +37,51 @@ public class Test {
 	    System.out.println(t.checkCustomParams(JSONObject.parseObject(jsonStr)));*/
 	    
 	    
-	   /* String s = "PayInfo":{"uid":"9876","productId":"333","productName":"西游降魔","productDesc":"西游",
-	        "productTotalPrice":"100","productUnitPrice":"10","productCount":"10","currencyName":"元",
+	   /* String s = "PayInfo":{"uid":"9876","productId":"333","productName":"瑗挎父闄嶉瓟","productDesc":"瑗挎父",
+	        "productTotalPrice":"100","productUnitPrice":"10","productCount":"10","currencyName":"鍏�",
 	        "ext":"330003","notifyURL":"http://10.20.72.72:8090/package/interfaceTest","roleId":"555",
-	        "roleName":"草上飞","serverId":"666","serverName":"dell","balance":"2999","gameOrderId":"8888",
+	        "roleName":"鑽変笂椋�","serverId":"666","serverName":"dell","balance":"2999","gameOrderId":"8888",
 	        "zoneId":"333","zoneName":"huanamqu"}*/
 	    //t.jsonTest();
+	  
+	  
+	 /* String s = "{\"heLLo\":\"world\",\"happy\":\"worldd\"}";
+	  JSONObject json = JSON.parseObject(s);
+	  System.out.println(json.getString("hello"));// case sensitive
+	  */
+	  /*SimpleDateFormat sdff = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");//Z represents the GMT/UTC timezone
+	  sdff.setTimeZone(TimeZone.getTimeZone("GMT"));
+	  System.out.println(sdff.format(new Date()) + sdff.getTimeZone().getID());//shanghai
+	  
+	  
+	  
+	    // UTC to localTime
+	    long ts = System.currentTimeMillis();
+	    Date localTime = new Date(ts);
+	    String format = "yyyy/MM/dd HH:mm:ss";
+	    SimpleDateFormat sdf = new SimpleDateFormat(format);
+	    System.out.println("local time: " + sdf.format(localTime));
+	    // Convert Local Time to UTC (Works Fine)
+	    sdf.setTimeZone(TimeZone.getTimeZone("UTC"));
+	    Date gmtTime = new Date(sdf.format(localTime));
+	    System.out.println("UTC TIME:" + sdf.format(localTime));
+
+
+	    // Convert UTC to Local Time
+	    String format2 = "yyyy/MM/dd HH:mm:ss";
+	    SimpleDateFormat sdf2 = new SimpleDateFormat(format);
+	    Date localTime2 = new Date(gmtTime.getTime() + TimeZone.getDefault().getOffset(localTime.getTime()));
+	    System.out.println("local time:" + sdf2.format(localTime2));*/
+		
+		
+		BigInteger bi = new BigInteger("12345");
+		System.out.println(bi.intValue());
+
+	  
 	}
+	
+	//convert UTC time to local time
+	
 	
 	//diguitest
 	private boolean checkCustomParams(JSONObject params){
