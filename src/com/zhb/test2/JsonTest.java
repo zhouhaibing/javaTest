@@ -1,11 +1,8 @@
 package com.zhb.test2;
 
-import java.util.List;
-
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.annotation.JSONField;
-import com.zhb.test2.model.Item;
 
 /**
  * fast json test
@@ -65,20 +62,35 @@ public class JsonTest {
 		JSONObject o = JSON.parseObject(jsonStr);
 		System.out.println(o.getInteger("age"));//o.getString also is right*/
 		
-		String str = "{\"code\":0,\"rechargeInfo\":[{\"productId\":201,\"name\":\"4000\u5143\u5b9d\",\"price\":\"9999\",\"currency\":\"USD\"},{\"productId\":202,\"name\":\"2500\u5143\u5b9d\",\"price\":\"4999\",\"currency\":\"USD\"},{\"productId\":203,\"name\":\"800\u5143\u5b9d\",\"price\":\"1999\",\"currency\":\"USD\"},{\"productId\":204,\"name\":\"400\u5143\u5b9d\",\"price\":\"999\",\"currency\":\"USD\"},{\"productId\":205,\"name\":\"200\u5143\u5b9d\",\"price\":\"499\",\"currency\":\"USD\"},{\"productId\":206,\"name\":\"40\u5143\u5b9d\",\"price\":\"99\",\"currency\":\"USD\"}]}";
+		/*String str = "{\"code\":0,\"rechargeInfo\":[{\"productId\":201,\"name\":\"4000\u5143\u5b9d\",\"price\":\"9999\",\"currency\":\"USD\"},{\"productId\":202,\"name\":\"2500\u5143\u5b9d\",\"price\":\"4999\",\"currency\":\"USD\"},{\"productId\":203,\"name\":\"800\u5143\u5b9d\",\"price\":\"1999\",\"currency\":\"USD\"},{\"productId\":204,\"name\":\"400\u5143\u5b9d\",\"price\":\"999\",\"currency\":\"USD\"},{\"productId\":205,\"name\":\"200\u5143\u5b9d\",\"price\":\"499\",\"currency\":\"USD\"},{\"productId\":206,\"name\":\"40\u5143\u5b9d\",\"price\":\"99\",\"currency\":\"USD\"}]}";
 		JSONObject obj = JSON.parseObject(str);
 		List<Item> itemList = JSON.parseArray(obj.getString("rechargeInfo"), Item.class);
-		System.out.println(itemList.size() + itemList.get(0).getProductId());
+		System.out.println(itemList.size() + itemList.get(0).getProductId());*/
 		
 		
+		Person p = new Person();
+		Name n = new Name();
+		n.setFirst("hello");
+		n.setSecond("world");
+		p.setName(n);
+		p.setAge(3);
+		p.setHoppy("basketball");
+		p.setCheck(false);
+		System.out.println(JSON.toJSONString(p));
+		JSONObject obj = JSON.parseObject(JSON.toJSONString(p));
+		System.out.println(obj.keySet());
 	}
 
 }
 
 class Person {
+	@JSONField(ordinal = 1)
 	private Name name;
+	@JSONField(ordinal = 4)
 	private int age;
+	@JSONField(ordinal = 2)
 	private String hoppy;
+	@JSONField(ordinal = 3)
 	private boolean check;
 
 	public boolean isCheck() {
@@ -122,7 +134,7 @@ class Person {
 	/**
 	 * @return the hoppy
 	 */
-	@JSONField(name = "hooppy")
+	@JSONField(name = "hooppy",ordinal = 2)
 	public String getHoppy() {
 		return hoppy;
 	}
@@ -143,7 +155,9 @@ class Person {
 }
 
 class Name {
+	@JSONField(ordinal = 2)
 	private String first;
+	@JSONField(ordinal = 1)
 	private String second;
 
 	/**

@@ -1,13 +1,11 @@
 package com.zhb.test;
 
-import java.math.BigDecimal;
 import java.math.BigInteger;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
-import java.util.TimeZone;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
@@ -76,6 +74,9 @@ public class Test {
 		
 		BigInteger bi = new BigInteger("12345");
 		System.out.println(bi.intValue());
+		
+		List<String> s = new ArrayList<String>();
+		s.toArray();
 
 	  
 	}
@@ -136,6 +137,8 @@ public class Test {
         m1.put("2", "44");
         m1.put("3", "rrr");
         System.out.println(JSON.toJSONString(m1));
+        
+        
     }
 	
 	

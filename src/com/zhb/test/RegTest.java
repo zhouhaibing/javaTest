@@ -52,7 +52,7 @@ public class RegTest {
         
         
         
-        String ss2 = "2015-07-31 18:55:06.673  INFO 125721 --- [o-28180-exec-10] c.s.p.s.service.rest.AppController       : start to call channel verify session service,authInfo:eyJhcHBJZCI6IjExMDkiLCJzaWduIjoiN2Y0YzczMWFjNWM1YTRkMGZlZGJiYzM2ZDY5ZmRhNDkiLCJ1SWQiOiJhNjZiM2Y2YjZjM2U3NWRmODU2NDg3X19FWFBfLiIsImF1dGhUb2tlbiI6InNlZGYyMGU2MTRmOTA3MGFhIiwiY2hhbm5lbElkIjoiamluc2hhbklPUyJ9,eyJhcHBJZCI6IjExMDkiLCJzaversion:";
+        /*String ss2 = "2015-07-31 18:55:06.673  INFO 125721 --- [o-28180-exec-10] c.s.p.s.service.rest.AppController       : start to call channel verify session service,authInfo:eyJhcHBJZCI6IjExMDkiLCJzaWduIjoiN2Y0YzczMWFjNWM1YTRkMGZlZGJiYzM2ZDY5ZmRhNDkiLCJ1SWQiOiJhNjZiM2Y2YjZjM2U3NWRmODU2NDg3X19FWFBfLiIsImF1dGhUb2tlbiI6InNlZGYyMGU2MTRmOTA3MGFhIiwiY2hhbm5lbElkIjoiamluc2hhbklPUyJ9,eyJhcHBJZCI6IjExMDkiLCJzaversion:";
         //String reg3 = "(\\d{1,})\\w{1,}";
         //String reg3 = "(\\d{3})\\w+";
         //String reg3 = "^(\\d{4}-\\d{2}-\\d{2}\\s\\d{2}:\\d{2}:\\d{2}).+";
@@ -85,7 +85,11 @@ public class RegTest {
         Matcher mat5 = pat5.matcher("%E5%A7");
         if(mat5.matches()){
             System.out.println(mat5.group(0));
-        }
+        }*/
+    	
+    	String ss = "xgsdk.qa.datasource.password";
+    	String regex = "xgsdk.(ci|qa).datasource.password";
+    	System.out.println(ss.matches(regex));
         
         
         
