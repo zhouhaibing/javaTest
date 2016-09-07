@@ -1,8 +1,12 @@
 package com.zhb.test2;
 
+import org.apache.commons.lang3.StringUtils;
+
 import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.annotation.JSONField;
+import com.alibaba.fastjson.serializer.PropertyFilter;
+import com.alibaba.fastjson.serializer.SerializerFeature;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  * fast json test
@@ -68,9 +72,9 @@ public class JsonTest {
 		System.out.println(itemList.size() + itemList.get(0).getProductId());*/
 		
 		
-		Person p = new Person();
+		/*Person p = new Person();
 		Name n = new Name();
-		n.setFirst("hello");
+		n.setFirst("");
 		n.setSecond("world");
 		p.setName(n);
 		p.setAge(3);
@@ -78,7 +82,32 @@ public class JsonTest {
 		p.setCheck(false);
 		System.out.println(JSON.toJSONString(p));
 		JSONObject obj = JSON.parseObject(JSON.toJSONString(p));
-		System.out.println(obj.keySet());
+		System.out.println(obj.keySet());*/
+		
+		PropertyFilter profilter = new PropertyFilter(){
+
+			@Override
+			public boolean apply(Object object, String name, Object value) {
+				if(name.equals("second") && value.equals("world")){
+					return false;
+				}
+				if(value instanceof String && StringUtils.isEmpty((String)value)){
+					return false;
+				}
+				
+				return true;
+			}
+			
+		};
+		Person p = new Person();
+		Name n = new Name();
+		n.setFirst("");
+		n.setSecond("world");
+		p.setName(n);
+		p.setIsSandbox(false);
+		System.out.println(JSON.toJSONString(p,SerializerFeature.WriteMapNullValue));//WriteNullStringAsEmpty
+		System.out.println(JSON.toJSONString(p,profilter));
+		
 	}
 
 }
@@ -92,7 +121,23 @@ class Person {
 	private String hoppy;
 	@JSONField(ordinal = 3)
 	private boolean check;
+	
+    @JSONField(serialize=false)
+	//@JsonIgnore no work
+	private boolean isSandbox;
 
+	
+	public boolean getIsSandbox() {
+		return isSandbox;
+	}
+
+	public void setIsSandbox(boolean isSandbox) {
+		this.isSandbox = isSandbox;
+	}
+	
+	
+	
+	
 	public boolean isCheck() {
 		return check;
 	}
@@ -157,7 +202,7 @@ class Person {
 class Name {
 	@JSONField(ordinal = 2)
 	private String first;
-	@JSONField(ordinal = 1)
+	@JSONField(ordinal = 1,deserialize=false)
 	private String second;
 
 	/**

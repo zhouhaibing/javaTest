@@ -1,9 +1,5 @@
 package com.zhb.test;
 
-import it.sauronsoftware.base64.Base64;
-
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class RegTest {
     public static void main(String[] args){

@@ -1,17 +1,9 @@
 package com.zhb.bigDataRead;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
-import com.zhb.bigDataRead.model.VerifySessionResponse;
-import com.zhb.bigDataRead.model.VerifySessionResponseData;
-
-import it.sauronsoftware.base64.Base64;
-
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -20,6 +12,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import org.apache.commons.codec.binary.Base64;
+
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import com.zhb.bigDataRead.model.VerifySessionResponse;
+import com.zhb.bigDataRead.model.VerifySessionResponseData;
 
 public class ReadBigTxtFile {
     
@@ -155,7 +153,7 @@ public class ReadBigTxtFile {
                             //System.out.println("authInfo: " + mat.group(1));
                             try{
                                 if(!authStr.startsWith("{\"")){
-                                    decodeStr = Base64.decode(authStr);
+                                    decodeStr = new String(Base64.decodeBase64(authStr.getBytes()),"UTF-8");
                                     authStr = decodeStr;
                                 }
                                 authObj = JSON.parseObject(authStr);                            
