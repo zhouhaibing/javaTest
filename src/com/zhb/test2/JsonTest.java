@@ -3,6 +3,7 @@ package com.zhb.test2;
 import org.apache.commons.lang3.StringUtils;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.alibaba.fastjson.serializer.PropertyFilter;
 import com.alibaba.fastjson.serializer.SerializerFeature;
@@ -17,6 +18,19 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class JsonTest {
 	public static void main(String[] args) {
 
+		JSONObject obj1 = JSONObject.parseObject("{}");
+		System.out.println(obj1);// "{}" return {}   "" or null  return null.
+		
+		/*String s2 = "{\"response\":\"{\\\"body\\\":\\\"hello\\\"}\"}";
+		JSONObject obj = JSONObject.parseObject(s2);
+		System.out.println(obj);*/
+		//json string format
+		//String s2 = "{\"response\":\"{\"body\":\"hello\"}\"}";// it is error.
+		//right:String s2 = "{\"response\":\"{\\\"body\\\":\\\"hello\\\"}\"}";
+		//right:String s3 = "{\"response\":{\"body\":\"hello\"}}";
+		//
+		// output {"response":"{\"body\":\"hello\"}"} in JSONObject.put("",JSONObject.toJSONString());
+		
 		/*JSONObject jsonObj = JSON.parseObject("{\"id\":0,\"state\":{\"code\":10,\"msg\":\"invalid request param\"}}");
 		System.out.println(jsonObj.getString("state"));
 		String json2 = "{\"code\":5,\"msg\":\"sign\\u65e0\\u6548\",\"data\":[]}";
@@ -108,6 +122,10 @@ public class JsonTest {
 		System.out.println(JSON.toJSONString(p,SerializerFeature.WriteMapNullValue));//WriteNullStringAsEmpty
 		System.out.println(JSON.toJSONString(p,profilter));
 		
+		System.out.println(JSON.parseObject("{}", Person.class));
+		
+		Person p2 = JSON.parseObject("{\"name\":{},\"check\":false,\"age\":0,\"Hoppy\":\"dddd\"}", Person.class);
+		System.out.println(p2.getHoppy());
 	}
 
 }
