@@ -12,6 +12,9 @@ public class HelloTest {
 	public static final String RFC_3339_PATTERN = "yyyy-MM-dd'T'HH:mm:ssXXX";// for 2014-12-12T00:00:00.000+09:00.or ISO 8601
 
 	public static void main(String[] args) throws ParseException {
+		
+		
+		
 		String[] ss = new String[]{"hello"};
 
 		/*int[] a = new int[] { 1, 2, 3, 4, 5 };
