@@ -13,7 +13,9 @@ public class HelloTest {
 
 	public static void main(String[] args) throws ParseException {
 		
-		
+		String s = "roleName=乱世&cc";
+		System.out.println(s.replaceAll("&", ""));;
+		System.out.println(s);
 		
 		String[] ss = new String[]{"hello"};
 

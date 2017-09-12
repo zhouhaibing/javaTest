@@ -21,6 +21,13 @@ public class JsonTest {
 		JSONObject obj1 = JSONObject.parseObject("{}");
 		System.out.println(obj1);// "{}" return {}   "" or null  return null.
 		
+		Person p = JSONObject.parseObject("{\"age\":123}", Person.class); //"" throw exception
+		System.out.println(p);
+		/**
+		 * \"pay_amount\":\"1.00\"
+			转成  double pay_amount   值为1   ;  1.05   则值为1.05
+		 */
+		
 		/*String s2 = "{\"response\":\"{\\\"body\\\":\\\"hello\\\"}\"}";
 		JSONObject obj = JSONObject.parseObject(s2);
 		System.out.println(obj);*/
@@ -98,7 +105,7 @@ public class JsonTest {
 		JSONObject obj = JSON.parseObject(JSON.toJSONString(p));
 		System.out.println(obj.keySet());*/
 		
-		PropertyFilter profilter = new PropertyFilter(){
+		/*PropertyFilter profilter = new PropertyFilter(){
 
 			@Override
 			public boolean apply(Object object, String name, Object value) {
@@ -125,7 +132,7 @@ public class JsonTest {
 		System.out.println(JSON.parseObject("{}", Person.class));
 		
 		Person p2 = JSON.parseObject("{\"name\":{},\"check\":false,\"age\":0,\"Hoppy\":\"dddd\"}", Person.class);
-		System.out.println(p2.getHoppy());
+		System.out.println(p2.getHoppy());*/
 	}
 
 }
